@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Glenn Watson <gw@intuitionlibrary.com>"]
 
 [dependencies.webrender]
-git = "https://github.com/servo/webrender"
+path = "../webrender"
 
 [dependencies.webrender_traits]
 git = "https://github.com/servo/webrender_traits"
@@ -14,3 +14,5 @@ glutin = "*"
 gleam = "*"
 euclid = "*"
 app_units = "*"
+env_logger = "*"
+log = "*"

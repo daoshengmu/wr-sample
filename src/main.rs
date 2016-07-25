@@ -4,6 +4,8 @@ extern crate glutin;
 extern crate gleam;
 extern crate webrender_traits;
 extern crate euclid;
+#[macro_use] extern crate log;
+extern crate env_logger;
 
 use euclid::{Size2D, Point2D, Rect, Matrix4D};
 use gleam::gl;
@@ -100,6 +102,9 @@ impl webrender_traits::RenderNotifier for Notifier {
 }
 
 fn main() {
+    // Enable LogLevel
+    env_logger::init().unwrap();
+
     let args: Vec<String> = env::args().collect();
     if args.len() != 2 {
         println!("{} <shader path>", args[0]);
@@ -134,7 +139,7 @@ fn main() {
         resource_path: PathBuf::from(res_path),
         enable_aa: false,
         enable_msaa: false,
-        enable_profiler: false,
+        enable_profiler: true,
     };
 
     let (mut renderer, sender) = webrender::renderer::Renderer::new(opts);
