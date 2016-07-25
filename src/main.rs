@@ -5,7 +5,6 @@ extern crate gleam;
 extern crate webrender_traits;
 extern crate euclid;
 
-use app_units::Au;
 use euclid::{Size2D, Point2D, Rect, Matrix4D};
 use gleam::gl;
 use std::path::PathBuf;
@@ -89,6 +88,9 @@ impl WebRenderFrameBuilder {
 impl webrender_traits::RenderNotifier for Notifier {
     fn new_frame_ready(&mut self) {
         self.window_proxy.wakeup_event_loop();
+    }
+
+    fn new_scroll_frame_ready(&mut self, _: bool) {
     }
 
     fn pipeline_size_changed(&mut self,
